@@ -6,16 +6,22 @@ let myLibrary = [{
     id: 1
 }];
 
-function Book(title, author, pages) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = true;
-    this.id = myLibrary.length + 1;
+const newButton = document.getElementById("new_button");
+const popupForm = document.getElementById('popup_form');
+const addForm = document.getElementById('add_form');
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = myLibrary.length + 1;
+    }
 };
 
-function addBookToLibrary() {
-    document.getElementById("add_form").addEventListener("submit", function(event){
+const addBookToLibrary = () => {
+    addForm.addEventListener("submit", function(event){
         event.preventDefault();
     });
 
@@ -26,13 +32,16 @@ function addBookToLibrary() {
         document.getElementsByName("read").value
     ));
 
-    document.getElementById("popup_form").style.display = "none";
-    document.getElementById("new_button").style.display = "flex";
+    popupForm.style.display = "none";
+    newButton.style.display = "flex";
 
     console.log(myLibrary)
-}
-
-const show_form = () => {
-   document.getElementById("popup_form").style.display = "flex";
-   document.getElementById("new_button").style.display = "none";
 };
+
+const showForm = () => {
+   popupForm.style.display = "flex";
+   newButton.style.display = "none";
+};
+
+console.log(newButton)
+console.log(popupForm);
