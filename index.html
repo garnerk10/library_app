@@ -13,18 +13,18 @@
         <h1>My Library</h1>
     </div>
 
-    <div class="display">
-        <button>Add Book</button>
+    <div class="book_grid">
+        <button onclick="show_form()" id="new_button">Add Book</button>
         <div class="cards">
 
         </div>
 
-        <div class="popup_form">
-            <form action="post">
+        <div class="popup_form" id="popup_form">
+            <form action="post" id="add_form">
                 <legend>Add new book</legend>
 
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required>
 
                 <label for="author">Author</label>
                 <input type="text" id="author" name="author" required>
@@ -40,7 +40,7 @@
                     <label for="not_read">Not Read</label>
                 </div>
 
-                <input type="submit">
+                <input type="submit" id="submitButton" onclick="addBookToLibrary()">
             </form>
         </div>
     </div>
