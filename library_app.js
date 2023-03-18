@@ -29,12 +29,16 @@ const addBookToLibrary = () => {
         document.getElementById("title").value,
         document.getElementById("author").value,
         document.getElementById("pages").value,
-        document.getElementsByName("read").value
+        document.getElementById("read").checked
     ));
-
+    
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("pages").value= "";
     popupForm.style.display = "none";
     newButton.style.display = "flex";
-
+    
+    
     console.log(myLibrary)
 };
 
