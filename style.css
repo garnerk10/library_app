@@ -1,3 +1,83 @@
-.popup_form {
+body {
+    background-color: dimgray;
+    margin: 0;
+}
+
+.header {
+    color: white;
+    border-bottom: 2px solid black;
+    padding-left: 5rem;
+
+}
+
+.book_grid {
+    display: grid;
+    overflow: auto;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 1rem;
+}
+
+#new_button {
+    font-size: 100px;
+    background-color: dimgray;
+    color: white;
+}
+
+#new_button:hover {
+    cursor: pointer;
+    background-color: rgb(110 209 222);
+}
+
+#new_button:active {
+    box-shadow: inset 0px 0px 5px 5px black;
+}
+
+.card, #new_button {
+    border: 5px solid white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+}
+
+.card {
+    background-color: rgb(110 209 222);
+    padding: 1rem;
+}
+
+.read_button, .remove_button {
+    width: 80%;
+    height: 10%;
+}
+
+#popup_form {
     display: none;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    flex-direction: column;
+    background-color: aliceblue;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    border-radius: 20px;
+}
+
+#add_form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+legend {
+    font-size: large;
 }

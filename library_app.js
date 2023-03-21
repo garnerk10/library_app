@@ -44,7 +44,11 @@ const addBookToLibrary = () => {
 
 const showForm = () => {
    popupForm.style.display = "flex";
-   newButton.style.display = "none";
+   const newLeft = (screen.width - 400)/2;
+   const newTop = (screen.height - 400)/3;
+
+   popupForm.style.left = `${newLeft}px`;
+   popupForm.style.top = `${newTop}px`;
 };
 
 console.log(newButton)

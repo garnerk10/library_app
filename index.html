@@ -13,27 +13,31 @@
         <h1>My Library</h1>
     </div>
 
+    <div class="popup_form" id="popup_form">
+        <form action="post" id="add_form">
+            <legend>Add new book</legend>
+
+            <input type="text" id="title" name="title" placeholder="Title" required>
+
+            <input type="text" id="author" name="author" placeholder="Author" required>
+
+            <input type="number" id="pages" name="pages" placeholder="Pages" required>
+            
+            <label for="read">Read</label>
+            <input type="checkbox" name="read" id="read">
+
+            <input type="submit" id="submitButton" onclick="addBookToLibrary()">
+        </form>
+    </div>
+
     <div class="book_grid">
-        <button onclick="showForm()" id="new_button">Add Book</button>
-        <div class="cards">
-
-        </div>
-
-        <div class="popup_form" id="popup_form">
-            <form action="post" id="add_form">
-                <legend>Add new book</legend>
-
-                <input type="text" id="title" name="title" placeholder="Title" required>
-
-                <input type="text" id="author" name="author" placeholder="Author" required>
-
-                <input type="number" id="pages" name="pages" placeholder="Pages" required>
-                
-                <label for="read">Read</label>
-                <input type="checkbox" name="read" id="read">
-
-                <input type="submit" id="submitButton" onclick="addBookToLibrary()">
-            </form>
+        <button onclick="showForm()" id="new_button">+</button>
+        <div class="card">
+            <h2>A Game of Thrones</h2>
+            <h3>George R. R. Martin</h3>
+            <h3>835 Pages</h3>
+            <button class="read_button">Read</button>
+            <button class="remove_button">Remove</button>
         </div>
     </div>
     
