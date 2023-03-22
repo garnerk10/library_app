@@ -9,6 +9,7 @@ let myLibrary = [{
 const newButton = document.getElementById("new_button");
 const popupForm = document.getElementById('popup_form');
 const addForm = document.getElementById('add_form');
+const bookGrid = document.getElementById("book_grid");
 
 class Book {
     constructor(title, author, pages, read) {
@@ -26,23 +27,72 @@ const addBookToLibrary = () => {
         event.preventDefault();
     });
 
-    myLibrary.push(new Book(
-        document.getElementById("title").value,
-        document.getElementById("author").value,
-        document.getElementById("pages").value,
-        document.getElementById("read").checked
-    ));
+    const getTitle = document.getElementById("title").value;
+    const getAuthor = document.getElementById("author").value;
+    const getPages = document.getElementById("pages").value;
+    const getRead = document.getElementById("read").checked;
+
+    const newBook = new Book(
+        getTitle,
+        getAuthor,
+        getPages,
+        getRead
+    );
+    
+    myLibrary.push(newBook);
+    addBookCard(newBook);
     
     document.getElementById("title").value = "";
     document.getElementById("author").value = "";
     document.getElementById("pages").value= "";
     popupForm.style.display = "none";
     newButton.style.display = "flex";
-    displayLibrary();
-    
-    
-    console.log(myLibrary)
 };
+
+//Create and add new book card to grid display
+const addBookCard = (bookObj) => {
+        const newCard = document.createElement("div");
+        newCard.setAttribute("class", "card");
+        newCard.setAttribute("id", `${bookObj.id}`)
+
+        const newTitle = document.createElement("h2");
+        newTitle.innerText = `${bookObj.title}`;
+
+        const newAuthor = document.createElement("h3");
+        newAuthor.innerText = `by ${bookObj.author}`;
+
+        const newPages = document.createElement("h3");
+        newPages.innerText = `${bookObj.pages} pages`;
+
+        const newReadButton = document.createElement("button");
+        newReadButton.innerText = "Read";
+        if(bookObj.read === true){
+            newReadButton.setAttribute("class", "read_button read")} 
+            else {
+                newReadButton.setAttribute("class", "read_button unread")
+        }
+        newReadButton.addEventListener("click", toggleRead);
+
+        const newRemove = document.createElement("button");
+        newRemove.innerText = "Remove";
+        newRemove.setAttribute("class", "remove_button");
+        newRemove.addEventListener("click", removeBook);
+
+        newCard.appendChild(newTitle);
+        newCard.appendChild(newAuthor);
+        newCard.appendChild(newPages);
+        newCard.appendChild(newReadButton);
+        newCard.appendChild(newRemove);
+        bookGrid.appendChild(newCard);
+};
+
+//Remove the card the grid and book from the library
+const removeBook = (e) => {
+    const targetId = e.target.getAttribute("id");
+    const targetCard = e.target.parentNode;
+    myLibrary.splice(targetId - 1, 1);
+    bookGrid.removeChild(targetCard); 
+}
 
 //toggle read/unread
 const toggleRead = (e) => {
@@ -62,45 +112,8 @@ const showForm = () => {
 };
 
 //Display all books stored in the library
-const bookGrid = document.getElementById("book_grid");
-
 const displayLibrary = () => {
-    myLibrary.forEach(book => {
-        const newBook = document.createElement("div");
-        newBook.setAttribute("class", "card")
-
-        const newTitle = document.createElement("h2");
-        newTitle.innerText = `${book.title}`;
-
-        const newAuthor = document.createElement("h3");
-        newAuthor.innerText = `by ${book.author}`;
-
-        const newPages = document.createElement("h3");
-        newPages.innerText = `${book.pages} pages`;
-
-        const newReadButton = document.createElement("button");
-        newReadButton.innerText = "Read";
-        if(book.read === true){
-            newReadButton.setAttribute("class", "read_button read")} 
-            else {
-                newReadButton.setAttribute("class", "read_button unread")
-        }
-        newReadButton.addEventListener("click", toggleRead);
-
-        const newRemove = document.createElement("button");
-        newRemove.innerText = "Remove"
-        newRemove.setAttribute("class", "remove_button");
-
-        
-        
-        newBook.appendChild(newTitle);
-        newBook.appendChild(newAuthor);
-        newBook.appendChild(newPages);
-        newBook.appendChild(newReadButton);
-        newBook.appendChild(newRemove);
-        bookGrid.appendChild(newBook);
-        
-    })
+    myLibrary.forEach(book => addBookCard(book))
 }
 
 window.addEventListener("load", displayLibrary());
