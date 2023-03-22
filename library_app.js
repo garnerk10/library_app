@@ -1,8 +1,8 @@
 let myLibrary = [{
-    name: "A Game of Thrones",
+    title: "A Game of Thrones",
     author: "George R. R. Martin",
     pages: 835,
-    read: false,
+    read: true,
     id: 1
 }];
 
@@ -20,6 +20,7 @@ class Book {
     }
 };
 
+//Function to get input from form and add new book to library and library grid
 const addBookToLibrary = () => {
     addForm.addEventListener("submit", function(event){
         event.preventDefault();
@@ -37,11 +38,20 @@ const addBookToLibrary = () => {
     document.getElementById("pages").value= "";
     popupForm.style.display = "none";
     newButton.style.display = "flex";
+    displayLibrary();
     
     
     console.log(myLibrary)
 };
 
+//toggle read/unread
+const toggleRead = (e) => {
+    if(e.target.classList.contains("read") === true){
+        e.target.setAttribute("class", "read_button unread")
+    } else {e.target.setAttribute("class", "read_button read")}
+};
+
+//display and center the popup form
 const showForm = () => {
    popupForm.style.display = "flex";
    const newLeft = (screen.width - 400)/2;
@@ -51,5 +61,46 @@ const showForm = () => {
    popupForm.style.top = `${newTop}px`;
 };
 
-console.log(newButton)
-console.log(popupForm);
+//Display all books stored in the library
+const bookGrid = document.getElementById("book_grid");
+
+const displayLibrary = () => {
+    myLibrary.forEach(book => {
+        const newBook = document.createElement("div");
+        newBook.setAttribute("class", "card")
+
+        const newTitle = document.createElement("h2");
+        newTitle.innerText = `${book.title}`;
+
+        const newAuthor = document.createElement("h3");
+        newAuthor.innerText = `by ${book.author}`;
+
+        const newPages = document.createElement("h3");
+        newPages.innerText = `${book.pages} pages`;
+
+        const newReadButton = document.createElement("button");
+        newReadButton.innerText = "Read";
+        if(book.read === true){
+            newReadButton.setAttribute("class", "read_button read")} 
+            else {
+                newReadButton.setAttribute("class", "read_button unread")
+        }
+        newReadButton.addEventListener("click", toggleRead);
+
+        const newRemove = document.createElement("button");
+        newRemove.innerText = "Remove"
+        newRemove.setAttribute("class", "remove_button");
+
+        
+        
+        newBook.appendChild(newTitle);
+        newBook.appendChild(newAuthor);
+        newBook.appendChild(newPages);
+        newBook.appendChild(newReadButton);
+        newBook.appendChild(newRemove);
+        bookGrid.appendChild(newBook);
+        
+    })
+}
+
+window.addEventListener("load", displayLibrary());

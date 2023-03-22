@@ -7,6 +7,8 @@ body {
     color: white;
     border-bottom: 2px solid black;
     padding-left: 5rem;
+    font-family: Righteous, cursive;
+    letter-spacing: .1rem;
 
 }
 
@@ -47,11 +49,22 @@ body {
 .card {
     background-color: rgb(110 209 222);
     padding: 1rem;
+    font-family: 'Varela Round', sans-serif;
 }
 
 .read_button, .remove_button {
     width: 80%;
     height: 10%;
+}
+
+.read {
+    color:lightgreen;
+    border: 3px solid lightgreen;
+}
+
+.unread {
+    color:grey;
+    border: 3px solid grey;
 }
 
 #popup_form {

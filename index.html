@@ -7,7 +7,11 @@
     <script src="library_app.js" async></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Varela+Round&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="header">
         <h1>My Library</h1>
@@ -30,15 +34,8 @@
         </form>
     </div>
 
-    <div class="book_grid">
+    <div class="book_grid" id="book_grid">
         <button onclick="showForm()" id="new_button">+</button>
-        <div class="card">
-            <h2>A Game of Thrones</h2>
-            <h3>George R. R. Martin</h3>
-            <h3>835 Pages</h3>
-            <button class="read_button">Read</button>
-            <button class="remove_button">Remove</button>
-        </div>
     </div>
     
 </body>
