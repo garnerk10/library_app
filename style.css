@@ -28,6 +28,11 @@ body {
     font-size: 100px;
     background-color: rgb(122 120 120);
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
 }
 
 #new_button:hover {
@@ -42,26 +47,38 @@ body {
 .card, #new_button {
     border: 5px solid white;
     border-radius: 20px;
-    display: flex;
+    /*display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     text-align: center;
-    align-items: center;
+    align-items: center;*/
 }
 
 .card {
     background-color: rgb(110 209 222);
     padding: 1rem;
     font-family: Nunito, sans-serif;
+    display: grid;
+    grid-template-rows: 30% 15% 15% 20% 20%;
+    grid-template-columns: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .read_button, .remove_button {
     width: 80%;
-    height: 10%;
+    height: 60%;
     border-radius: 20px;
     font-family: Nunito, sans-serif;
     font-size: 1.25rem;
     font-weight: 800;
+    justify-self: center;
+    align-self: center;
+}
+
+.read_button:hover, .remove_button:hover {
+    cursor: pointer
 }
 
 .read {

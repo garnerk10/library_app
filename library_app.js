@@ -67,10 +67,14 @@ const addBookCard = (bookObj) => {
         const newReadButton = document.createElement("button");
         newReadButton.innerText = "Read";
         if(bookObj.read === true){
-            newReadButton.setAttribute("class", "read_button read")} 
-            else {
-                newReadButton.setAttribute("class", "read_button unread")
-        }
+            newReadButton.setAttribute("class", "read_button read");
+            newReadButton.innerText = "Read"
+        } 
+        else {
+            newReadButton.setAttribute("class", "read_button unread");
+            newReadButton.innerText = "Not Read";
+        };
+        
         newReadButton.addEventListener("click", toggleRead);
 
         const newRemove = document.createElement("button");
