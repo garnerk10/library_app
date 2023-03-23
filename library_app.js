@@ -97,8 +97,12 @@ const removeBook = (e) => {
 //toggle read/unread
 const toggleRead = (e) => {
     if(e.target.classList.contains("read") === true){
-        e.target.setAttribute("class", "read_button unread")
-    } else {e.target.setAttribute("class", "read_button read")}
+        e.target.setAttribute("class", "read_button unread");
+        e.target.innerText = "Not Read";
+    } else {
+        e.target.setAttribute("class", "read_button read");
+        e.target.innerText = "Read";
+    }
 };
 
 //display and center the popup form
