@@ -22,16 +22,19 @@
         <form action="post" id="add_form">
             <legend>Add new book</legend>
 
-            <input type="text" id="title" name="title" placeholder="Title" required>
+            <input type="text" id="title" name="title" placeholder="Title" min="1" required>
+            <span id="titleError" class="error"></span>
 
-            <input type="text" id="author" name="author" placeholder="Author" required>
+            <input type="text" id="author" name="author" placeholder="Author" min="1" required>
+            <span id="authorError" class="error"></span>
 
-            <input type="number" id="pages" name="pages" placeholder="Pages" required>
+            <input type="number" id="pages" name="pages" placeholder="Pages" min="1" required>
+            <span id="pageError" class="error"></span>
             
             <label for="read">Read</label>
             <input type="checkbox" name="read" id="read">
 
-            <input type="submit" id="submitButton" onclick="addBookToLibrary()">
+            <h2 id="submitButton">Confirm</h2>
         </form>
     </div>
 

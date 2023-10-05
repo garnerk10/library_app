@@ -10,6 +10,11 @@ const newButton = document.getElementById("new_button");
 const popupForm = document.getElementById('popup_form');
 const addForm = document.getElementById('add_form');
 const bookGrid = document.getElementById("book_grid");
+const titleError = document.getElementById(`titleError`);
+const authorError = document.getElementById(`authorError`);
+const pageError = document.getElementById(`pageError`);
+const submitButton = document.getElementById(`submitButton`);
+
 
 class Book {
     constructor(title, author, pages, read) {
@@ -23,31 +28,45 @@ class Book {
 
 //Function to get input from form and add new book to library and library grid
 const addBookToLibrary = () => {
-    addForm.addEventListener("submit", function(event){
-        event.preventDefault();
-    });
 
-    const getTitle = document.getElementById("title").value;
-    const getAuthor = document.getElementById("author").value;
-    const getPages = document.getElementById("pages").value;
-    const getRead = document.getElementById("read").checked;
+    //Check form for valid entries
+    if(!title.validity.valid){
+        titleError.innerText = `Please enter a valid title`;
 
-    const newBook = new Book(
-        getTitle,
-        getAuthor,
-        getPages,
-        getRead
-    );
+    } else if(!author.validity.valid){
+        authorError.innerText = `Please enter a valid author`
+
+    } else if(!pages.validity.valid){
+        pageError.innerText = `Please enter a valid number of pages`    
+    } else {
     
-    myLibrary.push(newBook);
-    addBookCard(newBook);
-    
-    document.getElementById("title").value = "";
-    document.getElementById("author").value = "";
-    document.getElementById("pages").value= "";
-    popupForm.style.display = "none";
-    newButton.style.display = "flex";
+            const getTitle = document.getElementById("title").value;
+            const getAuthor = document.getElementById("author").value;
+            const getPages = document.getElementById("pages").value;
+            const getRead = document.getElementById("read").checked;
+
+            const newBook = new Book(
+                getTitle,
+                getAuthor,
+                getPages,
+                getRead
+            );
+
+            titleError.innerText = ``;
+            authorError.innerText = ``;
+            pageError.innerText = ``;
+            
+            myLibrary.push(newBook);
+            addBookCard(newBook);
+            
+            document.getElementById("title").value = "";
+            document.getElementById("author").value = "";
+            document.getElementById("pages").value= "";
+            popupForm.style.display = "none";
+            newButton.style.display = "flex";
+    }
 };
+submitButton.addEventListener(`click`,addBookToLibrary)
 
 //Create and add new book card to grid display
 const addBookCard = (bookObj) => {
